@@ -187,21 +187,21 @@
 			}
 		},
 		mounted() {
-			var animation = uni.createAnimation({
-				duration: 20 * 1000,
-				timingFunction:'linear',
+			// let animation = uni.createAnimation({
+			// 	duration: 20 * 1000,
+			// 	timingFunction:'linear',
 				
-			});
-			this.animation = animation;
+			// });
+			// this.animation = animation;
 			
-			this.animation.rotate(360).step();
-			this.animationData = this.animation.export();
+			// this.animation.rotate(360).step();
+			// this.animationData = this.animation.export();
 			
-			this.animationFnKey = setInterval(()=>{
-				this.cycles ++;
-				this.animation.rotate(360 + (this.cycles*360)).step();
-				this.animationData = this.animation.export();
-			}, 20 * 1000);
+			// this.animationFnKey = setInterval(()=>{
+			// 	this.cycles ++;
+			// 	this.animation.rotate(360 + (this.cycles*360)).step();
+			// 	this.animationData = this.animation.export();
+			// }, 20 * 1000);
 			
 			console.log("play music page mounted!");
 			this.playMusicById(this.option.id);

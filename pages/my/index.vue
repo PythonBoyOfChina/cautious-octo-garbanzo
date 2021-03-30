@@ -18,9 +18,9 @@
 				<u-avatar :src="src" mode="square" size="90" ></u-avatar>
 				<view class="user-name-box">
 					<view class="user-name">世染尘光</view>
-					<u-tag text="Lv.8" size="mini" bg-color="#a9aba6" color="#fff" border-color="transparent" shape="circle"/>
+					<u-tag text="Lv.8" size="mini" bg-color="#a9aba6" 
+						color="#fff" border-color="transparent" shape="circle"/>
 				</view>
-				<view style="color: #ddd;">开通黑胶VIP ></view>
 			</view>
 			
 			<!-- 本地音乐等 -->

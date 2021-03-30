@@ -4,7 +4,7 @@
 		<!-- 顶部标题栏控件 -->
 		<u-navbar :is-back="false" :height="55">
 			<view style="padding: 0 20rpx;">
-				<q-search-bar @focus="onFocus"/>
+				<q-search-bar @click="onClick" :disabled="true"/>
 			</view>
 		</u-navbar>
 		
@@ -241,9 +241,9 @@
 		},
 		methods:{
 			/**
-			 * 搜索框获得焦点时
+			 * 点击搜索框时
 			 */
-			onFocus(){
+			onClick(){
 				uni.navigateTo({
 					url: '/pages/searchPage/searchPage'
 				});

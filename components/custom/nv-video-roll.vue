@@ -10,7 +10,7 @@
 				:style="{'height': windowHeight + 'px'}"
 			>
 				<!-- 背景图片 -->
-				<image class="bg-image" :lazy-load="true" :fade-show="false"   :src="item.cover+'?param=270y480'" mode="cover"
+				<image class="bg-image" :lazy-load="true" :fade-show="false"   :src="item.cover" mode="cover"
 				 :style="{height: windowHeight+ 'px'}"></image>
 				<!-- 视频组件 -->
 				<view class="video-box" >

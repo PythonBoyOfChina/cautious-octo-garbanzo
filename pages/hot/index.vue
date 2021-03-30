@@ -17,7 +17,7 @@
 				:body-style="{'padding': 0}"
 			>
 				<!-- 歌手名 -->
-				<view slot="head" style="font-weight: bolder;" @tap="openArtist(item.artistId)">
+				<view slot="head" style="font-weight: bolder;" @tap.stop="openArtist(item.artistId)">
 					<text style="color: var(--primary-color);">{{item.artistName}}</text>
 					<text style="margin: 0 10rpx;"> - </text>
 					<text style="">{{item.name}}</text>

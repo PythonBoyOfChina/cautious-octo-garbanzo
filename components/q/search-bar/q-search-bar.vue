@@ -5,10 +5,12 @@
 			v-model="searchWord"
 			:placeholder="defaultSearchWord"  
 			:show-action="false"
+			:disabled="disabled"
 			@change="onChange"
 			@focus="onFocus"
 			@blur="onBlur"
 			@search="onSearch"
+			@click="onClick"
 		>
 		</u-search>
 	</view>
@@ -17,6 +19,9 @@
 
 <script>
 	export default {
+		props: {
+			disabled: Boolean,
+		},
 		data() {
 			return {
 				//默认搜索关键词
@@ -48,6 +53,9 @@
 			},
 			onSearch(value){
 				this.$emit('search', value);
+			},
+			onClick(value){
+				this.$emit('click', value);
 			},
 			setWord(value){
 				this.searchWord = value;

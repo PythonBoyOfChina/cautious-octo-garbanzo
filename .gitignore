@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-unpackage
 unpackage/dist/dev
 /conf/index.js
 /dist

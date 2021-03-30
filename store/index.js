@@ -2,12 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex);
+
 /**
  * 全局状态管理
  */
 const store = new Vuex.Store({
 	state: {
-		isPc: true, //是否是pc端
+		//isPc: true, //是否是pc端
 		//当前播放音乐id
 		audioId: null,
 		//音乐标题
@@ -18,7 +19,7 @@ const store = new Vuex.Store({
 		picUrl: '',
 		//音乐歌词
 		audioLrc: {
-			ms: null
+			ms: []
 		}, 
 		//音频组件信息
 		audioMeta: {
@@ -65,7 +66,21 @@ const store = new Vuex.Store({
 			state.audioLrc= val;
 		},
 		setAudioMeta(state, val){
-			state.audioMeta= val;
+			console.log("store-setAudioMeta-", val);
+			let transVal = {...state.audioMeta};
+			if (val.buffered) {
+				transVal.buffered = val.buffered;
+			}
+			if (val.duration) {
+				transVal.duration = val.duration;
+			}
+			if (val.currentTime) {
+				transVal.currentTime = val.currentTime;
+			}
+			if (val.paused != null) {
+				transVal.paused = val.paused;
+			}
+			state.audioMeta = transVal;
 		},
 	},
 	actions: {

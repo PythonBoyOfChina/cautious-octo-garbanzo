@@ -31,19 +31,13 @@
 						</image>
 					</view> -->
 					
-					<view class="play-bt" v-if="item.playing!==true"
-						:data-set="{index}"
-						@tap.stop="onClickVideo">
-						<u-icon name="play-right" size="120" color="#ddd"/>
-					</view>
-					
 					<!-- 视频控件 -->
 					<video
 						class="m-video"
+						:ref="'mVideo' + index" 
 						:id="'mVideo' + index" 
 						:data-set="{index}"
 						@tap.stop="onClickVideo"
-						:ref="'mVideo' + index" 
 						v-if="item.url"
 						:src="item.url.url"
 						:poste="item.coverUrl"
@@ -65,7 +59,8 @@
 						webkit-playsinline playsinline x5-playsinline x-webkit-airplay='allow' 
 						x5-video-player-type='h5' x5-video-orientation='portraint' x5-video-player-fullscreen=''
 						
-						:controls="false">
+						:controls="false"
+					>
 					</video>
 					
 					<!-- 内容区 -->
@@ -102,7 +97,7 @@
 						</view>
 						
 						<u-line-progress 
-							height="10" :show-percent="false" active-color="#e51419" 
+							height="5" :show-percent="false" active-color="#e51419" 
 							:percent="processPer">
 						</u-line-progress>
 					</view>
@@ -236,9 +231,13 @@
 			onChange(e){
 				console.log('onChange', e);
 				let {current, source} = e.detail;
-				//暂停上下两个的视频
-				this.pause(current-1);
-				this.pause(current+1);
+				try{
+					//暂停上下两个的视频
+					this.pause(current-1);
+					this.pause(current+1);
+				} catch (e) {
+					console.error('暂停视频出错', e);
+				}
 				console.log('------onChange current', current);
 				this.current = current;
 				this.doPlay(current);
@@ -423,7 +422,6 @@
 				if (!index) {
 					index = this.current;
 				}
-				console.debug(videoContext, '--pause video');
 				let videoContext = uni.createVideoContext('mVideo' + index);
 				if (videoContext) {
 					videoContext.pause();
@@ -438,6 +436,7 @@
 				if (!index) {
 					index = this.current;
 				}
+				
 				let videoContext = uni.createVideoContext('mVideo' + index);
 				if (videoContext) {
 					videoContext.play();

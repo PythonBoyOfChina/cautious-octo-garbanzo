@@ -87,6 +87,19 @@
 					this.$store.commit('setAudioMeta', audM);
 				}, 800);
 			},
+			/**
+			 * 更新进度
+			 * @param {Object} audioCtx
+			 */
+			updateCurrentTime(audioCtx){
+				this.$u.throttle(()=>{
+					console.log("updateCurrentTime")
+					let audM = {};
+					audM.currentTime = audioCtx.currentTime;
+					audM.paused = audioCtx.paused;
+					this.$store.commit('setAudioMeta', audM);
+				}, 800);
+			},
 		},
 	}
 </script>
