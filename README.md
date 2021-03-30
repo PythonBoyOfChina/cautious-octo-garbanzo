@@ -5,6 +5,46 @@ GitHub网易云音乐接口开源项目
  [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
 
+# 更新日志
+* 2021-03-30
+1. 去除音乐播放，图片滚动（uniapp 动画api好像很消耗性能）
+2. 添加原生app视频播放界面nvue文件支持
+3. 打包成安卓app,并支持扫码下载
+4. 优化一些细节
+
+# 已验证运行的平台
+<table>
+	<tr>
+		<td>平台</td>
+		<td>能否运行</td>
+	</tr>
+	<tr>
+		<td>H5</td>
+		<td>可以</td>
+	</tr>
+	<tr>
+		<td>微信小程序</td>
+		<td>可以</td>
+	</tr>
+	<tr>
+		<td>安卓App</td>
+		<td>可以</td>
+	</tr>
+	<tr>
+		<td>IOS App</td>
+		<td>没有苹果设备</td>
+	</tr>
+</table>
+
+# 安卓app下载
+项目已经打包成安卓app，在当前项目的doc文件夹下，名字就叫doItMusic-2.0.apk。只做演示用，不会获取你的任何信息。
+
+## 或者
+[点击这里下载doItMusic-2.0.apk](https://gitee.com/iszsq/doItMusic/raw/master/doc/doItMusic-2.0.apk)
+
+## 又或者扫码下载
+![app](./doc/doItMusic-android-qrcode.png)
+
 
 # 项目介绍
 ### 1.0的版本中，主要探讨的是视频的上下滑动播放，和nvue原生组件解决视频层级过高问题。
