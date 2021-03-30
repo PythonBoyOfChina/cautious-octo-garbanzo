@@ -38,6 +38,7 @@ GitHub网易云音乐接口开源项目
 
 # 安卓app下载
 项目已经打包成安卓app，在当前项目的doc文件夹下，名字就叫doItMusic-2.0.apk。只做演示用，不会获取你的任何信息。
+> 仅限体验，没有时间修bug了~
 
 ## 或者
 [点击这里下载doItMusic-2.0.apk](https://gitee.com/iszsq/doItMusic/raw/master/doc/doItMusic-2.0.apk)
