@@ -45,6 +45,13 @@ GitHub网易云音乐接口开源项目
 ## 又或者扫码下载
 ![app](./doc/doItMusic-android-qrcode.png)
 
+## 如果你没有gitee账号
+个人的网站，只有一百多k每秒
+[点击这里下载](http://iszsq.top/doItMusic-2.0.apk
+)
+![iszsq-app](./doc/iszsq-top-android-dl.png)
+
+
 
 # 项目介绍
 ### 1.0的版本中，主要探讨的是视频的上下滑动播放，和nvue原生组件解决视频层级过高问题。
