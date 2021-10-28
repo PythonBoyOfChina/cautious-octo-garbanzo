@@ -2,10 +2,13 @@
 **uniapp 项目。**
 # 参考项目
 GitHub网易云音乐接口开源项目
- [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
+ [网易云音乐接口 Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
 
 # 更新日志
+* 2021-10-28
+推荐一个可用的网易云接口地址： [https://music-api.heheda.top/](https://music-api.heheda.top/)
+---
 * 2021-03-30
 1. 更新README.md文档
 --- 
