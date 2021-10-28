@@ -7,7 +7,7 @@ GitHub网易云音乐接口开源项目
 
 # 更新日志
 * 2021-10-28
-推荐一个可用的网易云接口地址： [https://music-api.heheda.top/](https://music-api.heheda.top/)
+1. 推荐一个可用的网易云接口地址： [https://music-api.heheda.top/](https://music-api.heheda.top/)
 ---
 * 2021-03-30
 1. 更新README.md文档
