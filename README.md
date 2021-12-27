@@ -1,5 +1,7 @@
 # 【2.0】doItMusic  基于网易云音乐
 **uniapp 项目。**
+[演示地址](http://iszsq.gitee.io/doitmusic)
+
 # 参考项目
 GitHub网易云音乐接口开源项目
  [网易云音乐接口 Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
