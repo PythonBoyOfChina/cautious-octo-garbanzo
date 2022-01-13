@@ -1,6 +1,6 @@
 # 【2.0】doItMusic  基于网易云音乐
 **uniapp 项目。**
-[演示地址](http://iszsq.gitee.io/doitmusic)
+<a href="http://iszsq.gitee.io/doitmusic" target="_blank">在线演示地址</a>
 
 # 参考项目
 GitHub网易云音乐接口开源项目
