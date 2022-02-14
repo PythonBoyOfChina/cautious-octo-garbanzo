@@ -14,11 +14,14 @@ var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 11));
 __webpack_require__(/*! ./plugins/uView */ 13);
 var _MyBusPlugin = _interopRequireDefault(__webpack_require__(/*! ./plugins/MyBusPlugin */ 40));
 var _base = _interopRequireDefault(__webpack_require__(/*! ./mixins/base.vue */ 41));
-var _yunApi = _interopRequireDefault(__webpack_require__(/*! ./service/yunApi.js */ 45));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _yunApi = _interopRequireDefault(__webpack_require__(/*! ./service/yunApi.js */ 46));
+
+__webpack_require__(/*! @/static/css/styles.css */ 48);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
 
 _vue.default.config.productionTip = false;
 //api接口
-_vue.default.prototype.$yunApi = _yunApi.default;
+_vue.default.prototype.$api = _yunApi.default;
 //全局混入
 _vue.default.mixin(_base.default);
 //eventBus
@@ -97,32 +100,82 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
-var _dateUtil = _interopRequireDefault(__webpack_require__(/*! utils/dateUtil.js */ 44));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-var _default = { data: function data() {
+var _dateUtil = _interopRequireDefault(__webpack_require__(/*! utils/dateUtil.js */ 44));
+var _audioUtils = _interopRequireDefault(__webpack_require__(/*! ../utils/audioUtils.js */ 45));
+var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
+
+
+
+{
+  data: function data() {
     return {};
 
 
   },
-  computed: {},
+  computed: _objectSpread(_objectSpread({},
+  (0, _vuex.mapState)(['audioId', 'audioLrc', 'audioMeta'])), {}, {
+    /**
+                                                                     * 音频播放百分比
+                                                                     */
+    audioPlayPerc: function audioPlayPerc() {var _this$audioMeta =
+      this.audioMeta,_this$audioMeta$curre = _this$audioMeta.currentTime,currentTime = _this$audioMeta$curre === void 0 ? 0 : _this$audioMeta$curre,_this$audioMeta$durat = _this$audioMeta.duration,duration = _this$audioMeta$durat === void 0 ? 0 : _this$audioMeta$durat;
+
+      var i = (currentTime / duration * 100).toFixed(2);
+      return i;
+    },
+    /**
+        * 音频缓存百分比
+        */
+    audioBuffedPerc: function audioBuffedPerc() {var _this$audioMeta2 =
+      this.audioMeta,_this$audioMeta2$buff = _this$audioMeta2.buffered,buffered = _this$audioMeta2$buff === void 0 ? 0 : _this$audioMeta2$buff,_this$audioMeta2$dura = _this$audioMeta2.duration,duration = _this$audioMeta2$dura === void 0 ? 0 : _this$audioMeta2$dura;
+      var i = (buffered / duration * 100).toFixed(2);
+      return i;
+    } }),
+
+  watch: {},
 
 
   created: function created() {
 
   },
-  methods: {
-    //转换数字显示
-    formatNumber: function formatNumber(val) {var fixedNum = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  /**
+      * 监听返回事件触发，不一定全平台有效，有兼容性问题
+      * @param {Object} e
+      * @return {bool} 返回true表示阻止事件，取消返回
+      */
+  onBackPress: function onBackPress(e) {
+    console.log('onBackPress', e);
+    if (this.showComment === true) {
+      //关闭评论窗口，取消返回
+      this.showComment = false;
+      return true;
+    }
+  },
+  methods: _objectSpread(_objectSpread({},
+  (0, _vuex.mapMutations)({
+    setAudioId: "setAudioId",
+    setAudioTitle: "setAudioTitle",
+    setPicUrl: "setPicUrl",
+    setAudioLrc: "setAudioLrc",
+    setAudioMeta: "setAudioMeta" })), {}, {
+
+    /**
+                                             * 转换数字显示(单位：万)
+                                             * @param {val} 数值
+                                             * @param {fixedNum}  保留几位小数
+                                             * @param {ch} 是否中文      
+                                             */
+    formatNumber: function formatNumber(val) {var fixedNum = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;var ch = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
       if (!val) {
         return '';
       }
       if (val >= 10000) {
-        return (val / 10000).toFixed(fixedNum) + '万';
+        return (val / 10000).toFixed(fixedNum) + (ch ? '万' : 'w');
       }
       return val;
     },
@@ -132,7 +185,186 @@ var _default = { data: function data() {
     formatTime: function formatTime(time) {var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'yyyy-MM-dd';
       var date = new Date(time);
       return _dateUtil.default.dateFormat(format, date);
-    } } };exports.default = _default;
+    },
+    toFixed: function toFixed(num) {var fNum = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+      return num.toFixed(fNum);
+    },
+    /**
+        * 打开url链接
+        */
+    openUrl: function openUrl() {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var
+      url = params.url;
+      var enUrl = encodeURIComponent(url);
+      uni.navigateTo({
+        url: '/pages/webBrowser/webBrowser?url=' + enUrl });
+
+    },
+    /**
+        * 打开音乐播放页面
+        * id
+        * picUrl
+        * name
+        */
+    openMp3: function openMp3() {var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      console.log('-----openMp3', params);var
+      id = params.id,picUrl = params.picUrl,name = params.name;var
+      audioId = this.audioId,audioMeta = this.audioMeta;
+      if (id != audioId || audioMeta.paused) {
+        // this.setAudioId(id);
+        this.setAudioTitle(name);
+        this.setPicUrl(picUrl);
+      }
+
+      uni.navigateTo({
+        url: '/pages/playMusicPage/playMusicPage?id=' + id });
+
+    },
+    /**
+        * 根据id播放一首音乐
+        * @param {type} paramId 
+        */
+    playMusicById: function playMusicById(paramId) {var _this = this;var
+      audioId = this.audioId,audioMeta = this.audioMeta;
+      if (paramId == audioId && audioMeta.paused === false) {
+        return;
+      }
+      this.setAudioId(paramId);
+
+      //获取音乐url
+      this.$api.songUrl({ data: {
+          id: paramId } }).
+      then(function (data) {
+        var songs = data.data || [];
+        if (songs.length > 0 && songs[0].url) {
+          //播放音乐
+          _this.playMusicByUrl(songs[0].url);
+        } else {
+          uni.showModal({
+            title: '失败',
+            content: '无法获取该歌曲的播放地址，应该是没版权~' });
+
+
+        }
+
+        //获取歌词
+        return _this.$api.lyric({ data: {
+            id: paramId } });
+
+      }).then(function (data) {
+        //创建歌词对象
+        var audioLrc = _audioUtils.default.createLrcObj(data.lrc.lyric);
+        _this.setAudioLrc(audioLrc);
+      });
+    },
+    /**
+        * 播放一首歌曲根据Url
+        * @param {Object} url
+        */
+    playMusicByUrl: function playMusicByUrl(url) {
+      console.log("playMusicByUrl", url);
+      var audioCtx = getApp().globalData.audioCtx;
+      audioCtx.src = url;
+      audioCtx.play();
+
+      return audioCtx;
+    },
+    setAudioMetaInner: function setAudioMetaInner(audioCtx) {
+      var audM = {};
+      audM.volume = audioCtx.volume;
+      audM.buffered = audioCtx.buffered;
+      audM.duration = audioCtx.duration;
+      audM.currentTime = audioCtx.currentTime;
+      audM.paused = audioCtx.paused;
+      this.setAudioMeta(audM);
+      // console.log('setAudioMeta', this.audioMeta);
+    },
+    /**
+        * 播放音乐
+        */
+    doPlayAudio: function doPlayAudio() {
+      var audioCtx = getApp().globalData.audioCtx;
+      console.log("doPlayAudio", audioCtx);
+
+      if (audioCtx != null) {
+        audioCtx.play();
+      }
+    },
+    /**
+        * 暂停音乐
+        */
+    doPauseAudio: function doPauseAudio() {
+      console.log("doPauseAudio", audioCtx);
+      var audioCtx = getApp().globalData.audioCtx;
+      if (audioCtx != null) {
+        audioCtx.pause();
+      }
+    },
+    /**
+        * 转成分钟
+        */
+    parseMinute: function parseMinute() {var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      num < 0 ? 0 : num;
+      var i = parseInt(num / 60);
+      return i < 10 ? '0' + i : i;
+    },
+    /**
+        * 转成秒
+        */
+    parseSecond: function parseSecond() {var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var i = parseInt(num % 60);
+      return i < 10 ? '0' + i : i;
+    },
+    /**
+        * 打开歌手主页页面
+        */
+    openArtist: function openArtist(id) {
+      if (!id) {
+        return;
+      }
+      uni.navigateTo({
+        url: '/pages/artistPage/artistPage?id=' + id });
+
+    },
+    /**
+        * 打开歌单页面
+        * type: 1-歌单
+        * 		 2-专辑（默认）
+        */
+    openPlaylistPage: function openPlaylistPage(id) {var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+      uni.navigateTo({
+        url: "/pages/playlistPage/playlistPage?id=".concat(id, "&type=").concat(type) });
+
+    },
+    /**
+        * 开发中小提示
+        */
+    showDevToast: function showDevToast() {
+      uni.showToast({
+        title: '还没有时间做~' });
+
+    },
+    /**
+        * 显示普通的toast提示
+        * @param {Object} msg 
+        */
+    showNoneToast: function showNoneToast(msg) {
+      uni.showToast({
+        title: msg,
+        icon: 'none' });
+
+    },
+    /**
+        * 视频播放页面
+        * type: 1-mv
+        * 		 2-普通视频（默认）
+        */
+    openPlayVideoPage: function openPlayVideoPage(id) {var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+      console.log('openPlayVideoPage', id, type);
+      uni.navigateTo({
+        url: "/pages/playVideoPage/playVideoPage?id=".concat(id, "&type=").concat(type) });
+
+    } }) };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -200,10 +432,66 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
-  onLaunch: function onLaunch() {
+  globalData: {
+    //全局音频上下文
+    audioCtx: null },
+
+  onLaunch: function onLaunch() {var _this = this;
     console.log('App Launch');
+    //初始化音频上下文
+    var audioCtx = null;
+    var globalData = this.$options.globalData;
+    if (globalData.audioCtx == null) {
+      audioCtx = uni.createInnerAudioContext();
+      audioCtx.autoplay = true;
+
+      audioCtx.onError(function (res) {
+        console.error("audio播放错误", res);
+        uni.showToast({
+          title: '音频播放错误',
+          icon: 'none' });
+
+      });
+
+      audioCtx.onCanplay(function () {
+        console.info("onCanplay");
+        _this.setAudioMetaInner(audioCtx);
+        console.log("：", audioCtx.duration);
+        console.log("buffered：", audioCtx.buffered);
+        console.log("volume：", audioCtx.volume);
+        console.log("currentTime：", audioCtx.currentTime);
+      });
+
+      audioCtx.onPlay(function () {
+        _this.setAudioMetaInner(audioCtx);
+      });
+
+      audioCtx.onPause(function () {
+        _this.setAudioMetaInner(audioCtx);
+      });
+
+      audioCtx.onStop(function () {
+        _this.setAudioMetaInner(audioCtx);
+      });
+
+      audioCtx.onEnded(function () {
+        _this.setAudioMetaInner(audioCtx);
+      });
+
+      audioCtx.onWaiting(function () {
+        console.log("onWaiting");
+        _this.setAudioMetaInner(audioCtx);
+      });
+
+      audioCtx.onTimeUpdate(function () {
+        _this.setAudioMetaInner(audioCtx);
+      });
+
+      globalData.audioCtx = audioCtx;
+      this.$options.globalData = globalData;
+    }
   },
   onShow: function onShow() {
     console.log('App Show');
@@ -212,7 +500,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   onHide: function onHide() {
     console.log('App Hide');
     this.$bus.$emit('onAppHide');
-  } };exports.default = _default;
+  },
+  mounted: function mounted() {
+    console.log("app vue mounted!");
+  },
+  methods: {
+    /**
+              * 更新音频信息
+              * @param {Object} audioCtx
+              */
+    setAudioMetaInner: function setAudioMetaInner(audioCtx) {var _this2 = this;
+      this.$u.throttle(function () {
+        console.log("setAudioMetaInner");
+        var audM = {};
+        audM.volume = audioCtx.volume;
+        audM.buffered = audioCtx.buffered;
+        audM.duration = audioCtx.duration;
+        audM.currentTime = audioCtx.currentTime;
+        audM.paused = audioCtx.paused;
+        _this2.$store.commit('setAudioMeta', audM);
+      }, 800);
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

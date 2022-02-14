@@ -224,10 +224,10 @@
 				let current = e.detail.current;
 				this.$refs.uTabs.setFinishCurrent(current);
 				this.swiperCurrent = current;
+				this.currentTab = current;
 				if (this.currentTab !== current) {
 					this.toSearch(this.searchWord, current);
 				}
-				this.currentTab = current;
 			},
 			// scroll-view到底部加载更多
 			onreachBottom() {

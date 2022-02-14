@@ -4,7 +4,13 @@
     "pages/my/index",
     "pages/hot/index",
     "pages/more/index",
-    "pages/test/test"
+    "pages/webBrowser/webBrowser",
+    "pages/searchPage/searchPage",
+    "pages/searchPage/searchResult",
+    "pages/playMusicPage/playMusicPage",
+    "pages/artistPage/artistPage",
+    "pages/playlistPage/playlistPage",
+    "pages/playVideoPage/playVideoPage"
   ],
   "subPackages": [],
   "window": {
@@ -41,5 +47,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap49.json"
+  "sitemapLocation": "sitemap.json"
 }
