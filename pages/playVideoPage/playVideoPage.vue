@@ -517,6 +517,7 @@
 	
 	.m-video{
 		width: 100%;
+		height: 100%;
 		//#ifdef MP
 		height: 100%;
 		//#endif
